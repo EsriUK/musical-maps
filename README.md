@@ -26,13 +26,9 @@ You will need the following components to run the full Musical Maps experience:
 - (Optionally) a TypeScript compiler - but we've included the .js files, too
 
 # Sample
-We've made two web-only versions of Musical Maps so you can try it out without a MIDI workstation. We call them Musical Maps Lite. 
-Just remember, Musical Maps Lite is not the full experience! 
+We've made a web-only versions of Musical Maps so you can try it out without a MIDI workstation. We call it [Musical Maps Lite](http://bit.ly/2yTH7bT). Just remember, Musical Maps Lite is not the full experience! 
 
-1. SpeechRenderer Example 
-2. NumericAttributeRenderer Example 
-
-You can also check out [this video]() to see the full version of Musical Maps in action. 
+You can also check out [this video](https://github.com/maplabs/musical-maps/blob/master/Demo%20Video/MusicalMapsDemo.mp4) to see the full version of Musical Maps in action. 
 
 
 
