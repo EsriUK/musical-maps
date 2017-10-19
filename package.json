@@ -1,0 +1,22 @@
+{
+  "name": "musicalmaps",
+  "description": "Musical Maps Library",
+  "version": "0.3.1",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "glob": "*",
+    "replace": "*",
+    "grunt": "~0.4.1",
+    "grunt-ts": "*",
+    "grunt-tslint": "^3.1.0"
+  },
+  "scripts": {
+    "tslint": "grunt tslint --force",
+    "tsc": "tsc",
+    "tsc-watch": "tsc -w"
+  },
+  "keywords": [
+    "esriuk"
+  ]
+}

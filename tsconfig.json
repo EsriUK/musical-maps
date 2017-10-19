@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "noEmitHelpers": true,
+        "noEmitOnError": true,
+        "noImplicitAny": false,
+        "noImplicitUseStrict": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "experimentalDecorators": true,
+        "inlineSourceMap": false,
+        "target": "es5"
+    },
+    "files": [
+        "code/musicalmaps/musicalMap.ts",
+        "code/musicalmaps/midi/midiController.ts",
+        "code/musicalmaps/midi/musicController.ts",
+        "code/musicalmaps/renderers/proximityRenderers.ts",
+        "code/musicalmaps/renderers/visualRenderers.ts",
+        "code/musicalmaps/renderers/coreRenderers.ts",
+        "code/musicalmaps/renderers/simpleRenderers.ts",
+        "code/musicalmaps/geometry/geometryUtils.ts",
+        "code/musicalmaps/config/config.ts"
+        
+    ]
+}

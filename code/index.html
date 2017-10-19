@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Musical Maps 3.4</title>
+    <link rel="stylesheet" href="//js.arcgis.com/3.16/esri/css/esri.css">
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script>
+      var dojoConfig = {
+        async: true,
+        isDebug: true,
+        paths: {
+          musicalMaps: "/TFS/TSG_RnD/MusicalMaps/3.4/code/musicalmaps",
+        }
+      };
+    </script>
+
+
+    <script src="//js.arcgis.com/3.16/"></script>
+    <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
+
+    <script>
+      require(["musicalMaps/musicalMap" ], function (musicalMap) {
+        //stuff
+      });
+
+    </script>
+
+    <style>
+      html, body, #map {
+        height: 99.9%;
+        width:99.9%;
+        margin: auto;
+        top:0.1%;
+        padding: 0;
+        position: relative;
+
+        background-color: #222426;
+      }
+
+      label{
+        color: #eeeeee;
+        font-size: xx-large;
+        font-family: inherit;
+        font-weight: lighter;
+        padding:10px;
+      }
+
+      #map{
+        visibility: hidden;
+        z-index: 30;
+      }
+
+      .btn-default{
+        margin:18px;
+      }
+
+      .form-control{
+
+      }
+
+      #formBackground{
+        background-image: url("img/background.jpg");
+        background-color: #cccccc;
+        background-size: cover;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      #webmapForm{
+        z-index: 20;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.5);;
+        width: 50%;
+        margin: 0 auto; 
+        top: 50%;
+        transform: translateY(-45%);
+        padding: 20px;
+      }
+
+      #layerForm{
+        z-index: 25;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin: 0 auto;
+        padding: 20px;
+        visibility: hidden;
+        top: 30px;
+        left: 30px;
+        width:500px;
+      }
+      #layerConfigForm{
+        z-index: 27;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin: 0 auto;
+        padding: 20px;
+        visibility: hidden;
+        top: 30px;
+        left: 30px;
+        width: 500px;
+      }
+
+      #container{
+        z-index:0;
+        height:100%;
+        width:100%;
+      }
+
+      #downloadLink{
+        z-index: 40;
+        position: absolute;
+        bottom: 3%;
+        color: #eeeeee;
+        font-size: large;
+        font-family: inherit;
+        font-weight: lighter;
+      }
+
+      #dragDrop{
+        visibility:hidden;
+      }
+
+      #dragDropText{
+        z-index: 40;
+        position: absolute;
+        bottom: 50%;
+        left: 25%;
+        color: #eeeeee;
+        font-size: xx-large;
+        font-family: inherit;
+        font-weight: lighter;
+
+      }
+
+      #keyForm{
+        z-index: 50;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin: 0 auto;
+        padding: 20px;
+        visibility: hidden;
+        top: 30px;
+        left: 30px;
+      }
+
+      form{
+        text-align:center;
+      }
+
+      /*#title{
+        font-family: 'Handlee', cursive;
+        margin: auto;
+        width: 100%;
+        padding: 0;
+        position: absolute;
+        z-index: 20;
+        text-align: center;
+        top: 0%;
+        font-size: 40px;
+        color: #eeeeee;
+        text-shadow: 4px 4px 10px #121212;
+      }*/
+
+
+    </style> 
+
+    
+    
+  </head>
+
+  <body>
+      <div id="container">
+      <div id = formBackground>
+        <div id="webmapForm">
+          <!--div id = "title">Musical Maps</div-->
+          <form>
+            <div class="form-group">
+              <label for="webmapId">Let's start with a webmap</label>
+              <input type="text" class="form-control" id="webmapId" placeholder="a656e7dc9d744325aeb74844d8ef5546">
+              <button type='button' class='btn btn-default' id='webmapSubmit'>Go</button>
+            </div>
+            <!--button type="submit" class="btn btn-primary">Go!</button-->
+            <button id="configJson" type = "button" class="btn btn-link">Got a config file?</button>
+          </form>
+        </div>
+
+        <div id="dragDrop">
+          <div id="dragDropText"> Drop your config file here </div>
+        </div>
+
+        <div id="keyForm">
+
+          <form>
+            <div class="form-group">
+              <label id="keyTitle" for="renerersDropdown">What key shall we use?</label>
+              <select class="form-control" id="keyDropdown">
+                <option value='A'>A</option>
+                <option value='A#'>Bb</option>
+                <option value='B'>B</option>
+                <option value='C'>C</option>
+                <option value='C#'>C#</option>
+                <option value='D'>D</option>
+                <option value='D#'>Eb</option>
+                <option value='E'>E</option>
+                <option value='F'>F</option>
+                <option value='F#'>F#</option>
+                <option value='G'>G</option>
+                <option value='G#'>G#</option>
+              </select>
+              <select class="form-control" id="scaleDropdown">
+                <option>major</option>
+                <option>minor</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-default" id="keySubmit">Next</button>
+          </form>
+        </div>
+
+        <div id="layerForm">
+          <!--div id = "title">Musical Maps</div-->
+          <form>
+            <div class="form-group">
+              <!--label id="layerTitle">layernamehere</label-->
+              <label id="layerTitle" for="renerersDropdown">How should xyz layer sound?</label>
+              <select class="form-control" id="renderersDropdown">
+
+            </select>
+            </div>
+          </form>
+        </div>
+        <div id="layerConfigForm">
+        </div>
+      </div>
+
+      <div id="map"></div>
+      </div>
+  </body>
+</html>
